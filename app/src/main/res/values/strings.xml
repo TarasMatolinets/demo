@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">App Demo</string>
+    <string name="no_name">No name</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="most_anticipated">The most anticipated</string>
+    <string name="most_rated_games">Most rated games in 2020</string>
+    <string name="latest_released">Latest released</string>
+    <string name="something_went_wrong">"Something went wrong"</string>
+</resources>

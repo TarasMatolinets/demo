@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="gameItemCallback"
+            type="com.demo.mvvm.adapter.GameItemClick" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="gameUI"
+            type="com.demo.mvvm.model.GameModelUI" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        tools:background="@color/black">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_game"
+            android:layout_width="@dimen/horizontal_card_width"
+            android:layout_height="@dimen/horizontal_card_height"
+            android:layout_margin="@dimen/spacing_semi"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> gameItemCallback.gameItemClick(gameUI)}"
+            app:cardCornerRadius="@dimen/spacing_normal_semi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/black" />
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="fitXY" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_semi"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_semi"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:gravity="start"
+            android:text="@{!TextUtils.isEmpty(gameUI.name) ? gameUI.name : @string/no_name}"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_game"
+            tools:text="Game Title 1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
